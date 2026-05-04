@@ -1,0 +1,56 @@
+{
+  "name": "md-unzip",
+  "version": "0.0.0",
+  "description": "Extract code files from Markdown — unzip your docs.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "md-unzip": "./bin/md-unzip.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm build && pnpm test",
+    "release": "changeset version && pnpm install --no-frozen-lockfile && pnpm build && pnpm test && changeset publish",
+    "ci": "pnpm build && pnpm test"
+  },
+  "keywords": [
+    "markdown",
+    "extract",
+    "unzip",
+    "llm",
+    "code",
+    "cli"
+  ],
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.2",
+  "dependencies": {
+    "cac": "^7.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
+    "zod": "^4.4.2"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@types/node": "^25.6.0",
+    "esbuild": "^0.28.0",
+    "memfs": "^4.57.2",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
