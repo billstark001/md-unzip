@@ -93,6 +93,18 @@ describe('resolvePaths', () => {
     expect(files[0].path).toBe('src/n.py');
   });
 
+  it('resolves comment-path strategy for Vue', () => {
+    const blocks = [makeBlock('', '<!-- src/App.vue -->\n<template>\n  <div>Hello</div>\n</template>', 'vue')];
+    const files = resolvePaths(blocks, ['comment-path']);
+    expect(files[0].path).toBe('src/App.vue');
+  });
+
+  it('resolves comment-path strategy for HTML', () => {
+    const blocks = [makeBlock('', '<!-- index.html -->\n<!DOCTYPE html>', 'html')];
+    const files = resolvePaths(blocks, ['comment-path']);
+    expect(files[0].path).toBe('index.html');
+  });
+
   it('skips blocks with no matching strategy', () => {
     const blocks = [makeBlock('no path here', 'content', 'ts')];
     const files = resolvePaths(blocks, ['bold']);

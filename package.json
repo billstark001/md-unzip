@@ -1,6 +1,6 @@
 {
   "name": "md-unzip",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Extract code files from Markdown — unzip your docs.",
   "type": "module",
   "main": "./dist/index.js",
